@@ -1,0 +1,22 @@
+version: 2
+models:
+  - name: stg_cdr
+    columns:
+      - name: call_sid
+        tests: [unique, not_null]
+      - name: network_type
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['4G', '5G']
+  - name: customer_360
+    columns:
+      - name: customer_id
+        tests: [unique, not_null]
+  - name: mart_churn_risk
+    columns:
+      - name: churn_risk
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['low', 'medium', 'high']

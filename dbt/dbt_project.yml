@@ -1,0 +1,8 @@
+name: telecom
+version: "1.0"
+profile: telecom
+model-paths: ["models"]
+models:
+  telecom:
+    staging: {+materialized: view}
+    marts: {+materialized: table}

@@ -6,7 +6,27 @@ dist/
 wheels/
 *.egg-info
 
-# Virtual environments
-.venv
+# Python
+.venv/
+*.pyc
+.pytest_cache/
+.ruff_cache/
 
-data/*
+# Secrets
+.env
+
+# Local data lake and generated files
+data/
+logs/
+
+# dbt
+dbt/target/
+dbt/logs/
+dbt/dbt_packages/
+
+# Terraform
+infra/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+crash.log

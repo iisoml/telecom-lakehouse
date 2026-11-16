@@ -1,0 +1,23 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - run: uv sync --dev
+      - run: uv run ruff check .
+      - run: uv run pytest -q
+      - name: Pipeline with 2% chaos (gold must publish)
+        run: uv run python run_pipeline.py 0.02
+      - name: Pipeline with 20% chaos (gate must block)
+        run: |
+          rm -rf data
+          if uv run python run_pipeline.py 0.2; then
+            echo "Gate should have failed"; exit 1
+          fi
