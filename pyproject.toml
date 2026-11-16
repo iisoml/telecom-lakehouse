@@ -1,0 +1,23 @@
+[project]
+name = "telecom-lakehouse"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "iisoml", email = "iiboudi004@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "deltalake>=1.6.6",
+    "duckdb>=2.0.0",
+    "numpy>=2.5.5",
+    "pandas>=3.1.1",
+    "pyarrow>=26.0.1",
+]
+
+[project.scripts]
+telecom-lakehouse = "telecom_lakehouse:main"
+
+[build-system]
+requires = ["uv_build>=0.13.7,<0.14.0"]
+build-backend = "uv_build"
